@@ -1,0 +1,10 @@
+# Sample Pedigree File
+# This is a three-generation family with affected individuals
+# Format: FamilyID IndividualID PaternalID MaternalID Sex Phenotype
+FAM001	GF	0	0	1	1
+FAM001	GM	0	0	2	2
+FAM001	F1	GF	GM	1	1
+FAM001	M1	0	0	2	1
+FAM001	P1	F1	M1	1	2
+FAM001	P2	F1	M1	2	1
+FAM001	P3	F1	M1	1	2

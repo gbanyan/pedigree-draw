@@ -1,0 +1,114 @@
+.panel {
+  width: 280px;
+  background: white;
+  border-left: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.header {
+  padding: 12px 15px;
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.personId {
+  font-size: 12px;
+  color: #666;
+  font-weight: normal;
+  font-family: monospace;
+}
+
+.empty {
+  padding: 20px;
+  color: #999;
+  text-align: center;
+  font-size: 14px;
+}
+
+.section {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.sectionTitle {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #888;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #2196F3;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.optionButton {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.15s ease;
+}
+
+.optionButton:hover {
+  background: #f5f5f5;
+}
+
+.optionButton.active {
+  background: #e3f2fd;
+  border-color: #2196F3;
+  color: #1976D2;
+}
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.checkbox input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.infoText {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.noRelations {
+  color: #999;
+  font-style: italic;
+}

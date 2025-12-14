@@ -1,0 +1,116 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 15px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  min-height: 50px;
+}
+
+.toolGroup {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.groupLabel {
+  font-size: 11px;
+  color: #888;
+  margin-right: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.toolButton {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  transition: all 0.15s ease;
+}
+
+.toolButton:hover:not(:disabled) {
+  background: #f5f5f5;
+  border-color: #bbb;
+}
+
+.toolButton:active:not(:disabled) {
+  background: #eee;
+}
+
+.toolButton.active {
+  background: #e3f2fd;
+  border-color: #2196F3;
+  color: #2196F3;
+}
+
+.toolButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.divider {
+  width: 1px;
+  height: 30px;
+  background: #ddd;
+  margin: 0 5px;
+}
+
+.relationshipTool {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+
+.relationshipTool p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.relationshipRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.relationshipRow label {
+  font-size: 12px;
+  color: #666;
+}
+
+.relationshipRow select {
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.button {
+  padding: 6px 12px;
+  border: 1px solid #1976D2;
+  background: #1976D2;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.button:hover:not(:disabled) {
+  background: #1565C0;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
