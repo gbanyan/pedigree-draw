@@ -151,26 +151,26 @@ export function Toolbar() {
   return (
     <div className={styles.toolbar}>
       <div className={styles.toolGroup}>
-        <span className={styles.groupLabel}>Tools</span>
         <button
           className={`${styles.toolButton} ${currentTool === 'select' ? styles.active : ''}`}
           onClick={() => setCurrentTool('select')}
           title="Select (V)"
         >
           <SelectIcon />
+          Select
         </button>
       </div>
 
       <div className={styles.divider} />
 
       <div className={styles.toolGroup}>
-        <span className={styles.groupLabel}>Add Person</span>
         <button
           className={styles.toolButton}
           onClick={() => handleAddPerson(Sex.Male)}
           title="Add Male"
         >
           <MaleIcon />
+          Male
         </button>
         <button
           className={styles.toolButton}
@@ -178,6 +178,7 @@ export function Toolbar() {
           title="Add Female"
         >
           <FemaleIcon />
+          Female
         </button>
         <button
           className={styles.toolButton}
@@ -185,13 +186,13 @@ export function Toolbar() {
           title="Add Unknown"
         >
           <UnknownIcon />
+          Unknown
         </button>
       </div>
 
       <div className={styles.divider} />
 
       <div className={styles.toolGroup}>
-        <span className={styles.groupLabel}>Relationships</span>
         <button
           className={styles.toolButton}
           onClick={handleAddSpouse}
@@ -199,6 +200,7 @@ export function Toolbar() {
           title="Add Spouse"
         >
           <SpouseIcon />
+          Spouse
         </button>
         <button
           className={styles.toolButton}
@@ -207,6 +209,7 @@ export function Toolbar() {
           title="Add Child"
         >
           <ChildIcon />
+          Child
         </button>
         <button
           className={styles.toolButton}
@@ -215,27 +218,27 @@ export function Toolbar() {
           title="Add Parents"
         >
           <ParentsIcon />
+          Parents
         </button>
       </div>
 
       <div className={styles.divider} />
 
       <div className={styles.toolGroup}>
-        <span className={styles.groupLabel}>Edit</span>
         <button
           className={styles.toolButton}
           onClick={handleDelete}
           disabled={!selectedPersonId}
-          title="Delete Selected"
+          title="Delete Selected (Del)"
         >
           <DeleteIcon />
+          Delete
         </button>
       </div>
 
       <div className={styles.divider} />
 
       <div className={styles.toolGroup}>
-        <span className={styles.groupLabel}>History</span>
         <button
           className={styles.toolButton}
           onClick={() => undo()}
@@ -243,6 +246,7 @@ export function Toolbar() {
           title="Undo (Ctrl+Z)"
         >
           <UndoIcon />
+          Undo
         </button>
         <button
           className={styles.toolButton}
@@ -251,6 +255,21 @@ export function Toolbar() {
           title="Redo (Ctrl+Y)"
         >
           <RedoIcon />
+          Redo
+        </button>
+      </div>
+
+      <div className={styles.divider} />
+
+      <div className={styles.toolGroup}>
+        <button
+          className={styles.toolButton}
+          onClick={() => recalculateLayout()}
+          disabled={!pedigree || pedigree.persons.size === 0}
+          title="Auto Align - Reset all positions"
+        >
+          <AutoAlignIcon />
+          Auto Align
         </button>
       </div>
     </div>
@@ -344,6 +363,21 @@ function ParentsIcon() {
       <line x1="12" y1="5" x2="12" y2="10" />
       <circle cx="12" cy="18" r="4" />
       <line x1="12" y1="10" x2="12" y2="14" />
+    </svg>
+  );
+}
+
+function AutoAlignIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      {/* Grid lines */}
+      <line x1="4" y1="4" x2="4" y2="20" strokeDasharray="2,2" />
+      <line x1="12" y1="4" x2="12" y2="20" strokeDasharray="2,2" />
+      <line x1="20" y1="4" x2="20" y2="20" strokeDasharray="2,2" />
+      <line x1="4" y1="12" x2="20" y2="12" strokeDasharray="2,2" />
+      {/* Alignment arrows */}
+      <path d="M7 8 L12 4 L17 8" fill="none" />
+      <path d="M7 16 L12 20 L17 16" fill="none" />
     </svg>
   );
 }

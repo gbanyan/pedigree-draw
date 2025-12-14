@@ -9,6 +9,8 @@ import {
   RelationshipType,
   PartnershipStatus,
   ChildlessReason,
+  Sex,
+  createPerson,
 } from '@/core/model/types';
 import styles from './RelationshipPanel.module.css';
 
@@ -16,9 +18,12 @@ export function RelationshipPanel() {
   const {
     pedigree,
     selectedRelationshipId,
+    addPerson,
+    updatePerson,
     updateRelationship,
     deleteRelationship,
     clearSelection,
+    recalculateLayout,
   } = usePedigreeStore();
 
   const selectedRelationship = selectedRelationshipId && pedigree
@@ -53,6 +58,48 @@ export function RelationshipPanel() {
   const handleDelete = () => {
     deleteRelationship(selectedRelationship.id);
     clearSelection();
+  };
+
+  const handleAddChild = (sex: Sex) => {
+    if (!pedigree || !selectedRelationship) return;
+
+    const parent1 = pedigree.persons.get(selectedRelationship.person1Id);
+    const parent2 = pedigree.persons.get(selectedRelationship.person2Id);
+    if (!parent1 || !parent2) return;
+
+    // Determine father and mother based on sex
+    const father = parent1.sex === Sex.Male ? parent1 : (parent2.sex === Sex.Male ? parent2 : null);
+    const mother = parent1.sex === Sex.Female ? parent1 : (parent2.sex === Sex.Female ? parent2 : null);
+
+    // Create child
+    const childId = `P${Date.now().toString(36)}`;
+    const child = createPerson(childId, pedigree.familyId, sex);
+    child.metadata.label = childId;
+    child.fatherId = father?.id ?? null;
+    child.motherId = mother?.id ?? null;
+
+    // Position child below parents
+    const parentX = ((parent1.x ?? 0) + (parent2.x ?? 0)) / 2;
+    const parentY = Math.max(parent1.y ?? 0, parent2.y ?? 0);
+    child.x = parentX;
+    child.y = parentY + 120;
+
+    addPerson(child);
+
+    // Update parents' childrenIds
+    updatePerson(parent1.id, {
+      childrenIds: [...parent1.childrenIds, childId],
+    });
+    updatePerson(parent2.id, {
+      childrenIds: [...parent2.childrenIds, childId],
+    });
+
+    // Update relationship's childrenIds
+    updateRelationship(selectedRelationship.id, {
+      childrenIds: [...selectedRelationship.childrenIds, childId],
+    });
+
+    recalculateLayout();
   };
 
   return (
@@ -148,6 +195,31 @@ export function RelationshipPanel() {
             </select>
           </div>
         )}
+      </div>
+
+      {/* Add Child Section */}
+      <div className={styles.section}>
+        <div className={styles.sectionTitle}>Add Child</div>
+        <div className={styles.buttonGroup}>
+          <button
+            className={styles.optionButton}
+            onClick={() => handleAddChild(Sex.Male)}
+          >
+            Male
+          </button>
+          <button
+            className={styles.optionButton}
+            onClick={() => handleAddChild(Sex.Female)}
+          >
+            Female
+          </button>
+          <button
+            className={styles.optionButton}
+            onClick={() => handleAddChild(Sex.Unknown)}
+          >
+            Unknown
+          </button>
+        </div>
       </div>
 
       {/* Childlessness Section */}

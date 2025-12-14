@@ -18,28 +18,68 @@ A professional pedigree (family tree) drawing tool for genetic counselors and bi
 
 You need **Node.js** (version 18 or higher) installed on your computer.
 
-Check if you have it:
+#### Check if Node.js is installed:
 
 ```bash
 node --version
+npm --version
 ```
 
-If not installed, download from: https://nodejs.org/ (choose LTS version)
+If both commands show version numbers (e.g., `v20.10.0` and `10.2.0`), you're ready to go!
+
+#### If Node.js is NOT installed:
+
+**Windows:**
+1. Go to https://nodejs.org/
+2. Download the **LTS** version (recommended)
+3. Run the installer, click "Next" through all steps
+4. Restart your terminal/command prompt after installation
+
+**macOS:**
+```bash
+# Using Homebrew (recommended)
+brew install node
+
+# Or download from https://nodejs.org/
+```
+
+**Linux (Ubuntu/Debian):**
+```bash
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
 
 ---
 
-### Step 1: Start the Server
+### Step 1: Install Dependencies (First Time Only)
 
 Open your terminal and navigate to the project folder:
 
 ```bash
-cd /home/gbanyan/projects/pedigree-draw
+cd /path/to/pedigree-draw
 ```
+
+Install the required packages:
+
+```bash
+npm install
+```
+
+This will download all necessary dependencies. You only need to do this once (or after updating the code).
+
+---
+
+### Step 2: Start the Server
 
 Run the start script:
 
 ```bash
 ./start.sh
+```
+
+**On Windows**, use:
+```bash
+npm run dev
 ```
 
 You should see output like:
@@ -57,7 +97,7 @@ You should see output like:
 
 ---
 
-### Step 2: Open in Browser
+### Step 3: Open in Browser
 
 Open your web browser and go to:
 
@@ -66,13 +106,15 @@ Open your web browser and go to:
 
 ---
 
-### Step 3: Stop the Server
+### Step 4: Stop the Server
 
 When you're done, stop the server:
 
 ```bash
 ./stop.sh
 ```
+
+**On Windows**, press `Ctrl+C` in the terminal to stop the server.
 
 ---
 
@@ -145,11 +187,27 @@ You can also:
 | Export PNG | Raster image (for documents, presentations) |
 | Export PED | GATK PED format file |
 
-### Undo/Redo
+### Keyboard Shortcuts
 
-Use the Undo/Redo buttons in the toolbar, or:
-- **Ctrl+Z** to Undo
-- **Ctrl+Y** to Redo
+| Shortcut | Action |
+|----------|--------|
+| **Delete** or **Backspace** | Delete selected person or relationship |
+| **Escape** | Clear selection |
+| **Ctrl+Z** | Undo |
+| **Ctrl+Y** or **Ctrl+Shift+Z** | Redo |
+
+### Editing Relationships
+
+1. Click on the **connection line** between two people to select the relationship
+2. The right panel will show relationship options:
+   - **Add Child**: Add a Male/Female/Unknown child to this couple
+   - **Partnership Status**: Married, Unmarried, Separated, Divorced
+   - **Consanguinity**: Mark as consanguineous (blood relatives)
+   - **Children Status**: Infertility or No children by choice
+
+### Auto Align
+
+If elements get messy after dragging, click the **Auto Align** button in the toolbar to automatically reposition all family members according to their generation and relationships.
 
 ---
 

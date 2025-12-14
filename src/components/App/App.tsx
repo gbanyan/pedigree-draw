@@ -14,12 +14,24 @@ import { usePedigreeStore, useTemporalStore } from '@/store/pedigreeStore';
 import styles from './App.module.css';
 
 export function App() {
-  const { clearSelection, selectedRelationshipId } = usePedigreeStore();
+  const {
+    clearSelection,
+    selectedPersonId,
+    selectedRelationshipId,
+    deletePerson,
+    deleteRelationship,
+  } = usePedigreeStore();
   const temporal = useTemporalStore();
 
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't handle shortcuts when typing in inputs
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT') {
+        return;
+      }
+
       // Undo: Ctrl/Cmd + Z
       if ((e.ctrlKey || e.metaKey) && e.key === 'z' && !e.shiftKey) {
         e.preventDefault();
@@ -36,11 +48,21 @@ export function App() {
       if (e.key === 'Escape') {
         clearSelection();
       }
+
+      // Delete or Backspace: Delete selected element
+      if (e.key === 'Delete' || e.key === 'Backspace') {
+        e.preventDefault();
+        if (selectedPersonId) {
+          deletePerson(selectedPersonId);
+        } else if (selectedRelationshipId) {
+          deleteRelationship(selectedRelationshipId);
+        }
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [clearSelection, temporal]);
+  }, [clearSelection, selectedPersonId, selectedRelationshipId, deletePerson, deleteRelationship, temporal]);
 
   return (
     <div className={styles.app}>

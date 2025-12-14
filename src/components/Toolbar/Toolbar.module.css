@@ -23,8 +23,8 @@
 }
 
 .toolButton {
-  width: 36px;
   height: 36px;
+  padding: 0 10px;
   border: 1px solid #ddd;
   background: white;
   border-radius: 4px;
@@ -32,8 +32,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   color: #333;
   transition: all 0.15s ease;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.toolButton svg {
+  flex-shrink: 0;
 }
 
 .toolButton:hover:not(:disabled) {
