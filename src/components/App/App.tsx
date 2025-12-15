@@ -4,14 +4,17 @@
  * Main application layout
  */
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { PedigreeCanvas } from '../PedigreeCanvas/PedigreeCanvas';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { PropertyPanel } from '../PropertyPanel/PropertyPanel';
 import { RelationshipPanel } from '../RelationshipPanel/RelationshipPanel';
 import { FilePanel } from '../FilePanel/FilePanel';
+import { WelcomeModal } from '../WelcomeModal/WelcomeModal';
 import { usePedigreeStore, useTemporalStore } from '@/store/pedigreeStore';
 import styles from './App.module.css';
+
+const WELCOME_DISMISSED_KEY = 'pedigree-draw-welcome-dismissed';
 
 export function App() {
   const {
@@ -22,6 +25,15 @@ export function App() {
     deleteRelationship,
   } = usePedigreeStore();
   const temporal = useTemporalStore();
+
+  // Welcome modal state - check localStorage on init
+  const [showWelcome, setShowWelcome] = useState(() => {
+    return localStorage.getItem(WELCOME_DISMISSED_KEY) !== 'true';
+  });
+
+  const handleCloseWelcome = () => {
+    setShowWelcome(false);
+  };
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -85,6 +97,8 @@ export function App() {
         <span>Pedigree Draw - For genetic counselors and bioinformatics professionals</span>
         <span>NSGC Standard Symbols</span>
       </footer>
+
+      {showWelcome && <WelcomeModal onClose={handleCloseWelcome} />}
     </div>
   );
 }

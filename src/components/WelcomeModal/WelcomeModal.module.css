@@ -1,0 +1,92 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 520px;
+  width: 100%;
+  padding: 32px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1976D2;
+  text-align: center;
+  margin: 0 0 24px 0;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.paragraph {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  margin: 0 0 12px 0;
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 14px 24px;
+  background: #1976D2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.button:hover {
+  background: #1565C0;
+}
+
+.button:active {
+  background: #0D47A1;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .modal {
+    padding: 24px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .paragraph {
+    font-size: 13px;
+  }
+}
