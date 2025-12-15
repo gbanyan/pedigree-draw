@@ -1,6 +1,23 @@
 # Pedigree Draw
 
+**English** | [繁體中文](README.zh-TW.md)
+
 A professional pedigree (family tree) drawing tool for genetic counselors and bioinformatics professionals.
+
+## Motivation & Background
+
+This project is created by an author with Usher syndrome.
+
+The motivation behind this work is to support research
+in genetics, genealogy, and bioinformatics, and to explore
+how visualization tools may assist in understanding
+hereditary conditions.
+
+The author explicitly supports research related to
+Usher syndrome and other genetic disorders, and hopes
+this project may contribute, even in a small way,
+to the bioinformatics research community.
+
 
 ## Features
 
