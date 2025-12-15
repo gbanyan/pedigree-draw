@@ -137,11 +137,11 @@ export class ConnectionRenderer {
     }
 
     const childY = children[0].y;
-    const midY = parentY + halfSymbol + dropHeight;
+    const midY = parentY + dropHeight;
 
-    // Vertical line from parent connection point
+    // Vertical line from parent connection point (starts at spouse line level)
     paths.push({
-      d: `M ${parentX} ${parentY + halfSymbol} L ${parentX} ${midY}`,
+      d: `M ${parentX} ${parentY} L ${parentX} ${midY}`,
       className: 'connection-parent-child',
     });
 

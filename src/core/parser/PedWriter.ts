@@ -18,6 +18,12 @@ export class PedWriter {
   write(pedigree: Pedigree): string {
     const lines: string[] = [];
 
+    // Build ID to label mapping (use label if available, otherwise use ID)
+    const idToLabel = new Map<string, string>();
+    for (const [id, person] of pedigree.persons) {
+      idToLabel.set(id, person.metadata.label || id);
+    }
+
     // Add header comment
     lines.push(`# Pedigree: ${pedigree.familyId}`);
     lines.push(`# Generated: ${new Date().toISOString()}`);
@@ -28,7 +34,7 @@ export class PedWriter {
     const sortedPersons = this.sortPersonsByGeneration(pedigree);
 
     for (const person of sortedPersons) {
-      const line = this.formatPersonLine(person);
+      const line = this.formatPersonLine(person, idToLabel);
       lines.push(line);
     }
 
@@ -38,12 +44,16 @@ export class PedWriter {
   /**
    * Format a single person as a PED line
    */
-  private formatPersonLine(person: Person): string {
+  private formatPersonLine(person: Person, idToLabel: Map<string, string>): string {
+    const individualId = idToLabel.get(person.id) || person.id;
+    const paternalId = person.fatherId ? (idToLabel.get(person.fatherId) || person.fatherId) : '0';
+    const maternalId = person.motherId ? (idToLabel.get(person.motherId) || person.motherId) : '0';
+
     const fields = [
       person.familyId,
-      person.id,
-      person.fatherId ?? '0',
-      person.motherId ?? '0',
+      individualId,
+      paternalId,
+      maternalId,
       this.formatSex(person.sex),
       this.formatPhenotype(person.phenotypes[0] ?? Phenotype.Unknown),
     ];
