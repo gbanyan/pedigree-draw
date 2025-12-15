@@ -4,6 +4,10 @@
 
 A professional pedigree (family tree) drawing tool for genetic counselors and bioinformatics professionals.
 
+## Online Demo
+
+https://gbanyan.github.io/pedigree-draw/
+
 ## Motivation & Background
 
 This project is created by an author with Usher syndrome.

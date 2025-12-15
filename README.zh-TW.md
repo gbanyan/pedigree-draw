@@ -4,6 +4,10 @@
 
 專為遺傳諮詢師和生物資訊專業人員設計的 Pedigree（家族樹）繪圖工具。
 
+## 線上 Demo
+
+https://gbanyan.github.io/pedigree-draw/
+
 ## 動機與背景
 
 本專案由一位患有 Usher syndrome 的作者所建立。
