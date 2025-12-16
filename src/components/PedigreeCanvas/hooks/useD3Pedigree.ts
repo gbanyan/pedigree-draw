@@ -446,7 +446,7 @@ function renderPersons(
         .attr('fill', 'none');
     }
 
-    // Label (positioned just below the symbol, above connection lines)
+    // Label line 1 (positioned just below the symbol, above connection lines)
     if (options.showLabels && person.metadata.label) {
       personGroup
         .append('text')
@@ -472,7 +472,48 @@ function renderPersons(
         .attr('fill', '#666')
         .text(person.id);
     }
+
+    // Label line 2 (subtitle/additional info)
+    const line2Text = buildSecondLineText(person);
+    if (options.showLabels && line2Text) {
+      personGroup
+        .append('text')
+        .attr('class', 'person-label-line2')
+        .attr('x', 0)
+        .attr('y', options.symbolSize / 2 + 30)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', '10px')
+        .attr('font-family', 'sans-serif')
+        .attr('fill', '#666')
+        .text(line2Text);
+    }
   }
+}
+
+/**
+ * Build the second line text from person metadata
+ */
+function buildSecondLineText(person: Person): string {
+  const parts: string[] = [];
+  const meta = person.metadata;
+
+  // Custom text first
+  if (meta.label2) {
+    parts.push(meta.label2);
+  }
+
+  // Year/age info
+  if (meta.showBirthYear && meta.birthYear) {
+    parts.push(`b.${meta.birthYear}`);
+  }
+  if (meta.showDeathYear && meta.deathYear) {
+    parts.push(`d.${meta.deathYear}`);
+  }
+  if (meta.showAge && meta.age !== undefined) {
+    parts.push(`${meta.age}y`);
+  }
+
+  return parts.join(' ');
 }
 
 function renderGenerationLabels(

@@ -50,6 +50,18 @@ export function PropertyPanel() {
     });
   };
 
+  const handleLabel2Change = (label2: string) => {
+    updatePerson(selectedPerson.id, {
+      metadata: { ...selectedPerson.metadata, label2 },
+    });
+  };
+
+  const handleMetadataChange = (key: keyof typeof selectedPerson.metadata, value: unknown) => {
+    updatePerson(selectedPerson.id, {
+      metadata: { ...selectedPerson.metadata, [key]: value },
+    });
+  };
+
   return (
     <div className={styles.panel}>
       <div className={styles.header}>
@@ -66,6 +78,72 @@ export function PropertyPanel() {
           onChange={(e) => handleLabelChange(e.target.value)}
           placeholder="Enter label..."
         />
+      </div>
+
+      <div className={styles.section}>
+        <div className={styles.sectionTitle}>Label Line 2</div>
+        <input
+          type="text"
+          className={styles.input}
+          value={selectedPerson.metadata.label2 ?? ''}
+          onChange={(e) => handleLabel2Change(e.target.value)}
+          placeholder="Second line text..."
+        />
+      </div>
+
+      <div className={styles.section}>
+        <div className={styles.sectionTitle}>Birth/Death/Age</div>
+        <div className={styles.inlineGroup}>
+          <label className={styles.inlineLabel}>
+            <input
+              type="checkbox"
+              checked={selectedPerson.metadata.showBirthYear ?? false}
+              onChange={(e) => handleMetadataChange('showBirthYear', e.target.checked)}
+            />
+            Birth
+          </label>
+          <input
+            type="number"
+            className={styles.smallInput}
+            value={selectedPerson.metadata.birthYear ?? ''}
+            onChange={(e) => handleMetadataChange('birthYear', e.target.value ? parseInt(e.target.value) : undefined)}
+            placeholder="Year"
+          />
+        </div>
+        <div className={styles.inlineGroup}>
+          <label className={styles.inlineLabel}>
+            <input
+              type="checkbox"
+              checked={selectedPerson.metadata.showDeathYear ?? false}
+              onChange={(e) => handleMetadataChange('showDeathYear', e.target.checked)}
+            />
+            Death
+          </label>
+          <input
+            type="number"
+            className={styles.smallInput}
+            value={selectedPerson.metadata.deathYear ?? ''}
+            onChange={(e) => handleMetadataChange('deathYear', e.target.value ? parseInt(e.target.value) : undefined)}
+            placeholder="Year"
+          />
+        </div>
+        <div className={styles.inlineGroup}>
+          <label className={styles.inlineLabel}>
+            <input
+              type="checkbox"
+              checked={selectedPerson.metadata.showAge ?? false}
+              onChange={(e) => handleMetadataChange('showAge', e.target.checked)}
+            />
+            Age
+          </label>
+          <input
+            type="number"
+            className={styles.smallInput}
+            value={selectedPerson.metadata.age ?? ''}
+            onChange={(e) => handleMetadataChange('age', e.target.value ? parseInt(e.target.value) : undefined)}
+            placeholder="Age"
+          />
+        </div>
       </div>
 
       <div className={styles.section}>

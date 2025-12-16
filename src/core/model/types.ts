@@ -62,6 +62,10 @@ export interface PersonStatus {
 
 export interface PersonMetadata {
   label?: string;
+  label2?: string;         // Second line custom text
+  showBirthYear?: boolean; // Show birth year in label
+  showDeathYear?: boolean; // Show death year in label
+  showAge?: boolean;       // Show age in label
   notes?: string;
   birthYear?: number;
   deathYear?: number;
@@ -184,6 +188,19 @@ export interface LayoutNode {
   y: number;
   generation: number;
   order: number; // Order within generation
+}
+
+/**
+ * Family Unit - represents a couple and their children
+ * Used for calculating layout widths and preventing overlaps
+ */
+export interface FamilyUnit {
+  id: string;
+  parents: string[];        // Person IDs of parents (1-2 people)
+  children: string[];       // Person IDs of direct children
+  relationshipId: string | null;
+  generation: number;       // Generation of the parents
+  minWidth: number;         // Minimum width needed for this family
 }
 
 // ============================================
