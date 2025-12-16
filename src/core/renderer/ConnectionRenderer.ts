@@ -22,7 +22,7 @@ export interface ConnectionConfig {
 export const DEFAULT_CONNECTION_CONFIG: ConnectionConfig = {
   lineWidth: 2,
   doubleLineGap: 4,
-  childDropHeight: 30,
+  childDropHeight: 50,  // Increased to leave room for labels above the connection lines
   symbolSize: 40,
 };
 

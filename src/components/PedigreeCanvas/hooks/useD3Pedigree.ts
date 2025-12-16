@@ -446,15 +446,13 @@ function renderPersons(
         .attr('fill', 'none');
     }
 
-    // Label (positioned below connection lines)
-    // Vertical lines to children end at childY - halfSymbol = parentY + verticalSpacing - 20 = parentY + 80
-    // So label must be > 80 to avoid overlap. Using 85.
+    // Label (positioned just below the symbol, above connection lines)
     if (options.showLabels && person.metadata.label) {
       personGroup
         .append('text')
         .attr('class', 'person-label')
         .attr('x', 0)
-        .attr('y', options.symbolSize / 2 + 65)
+        .attr('y', options.symbolSize / 2 + 15)
         .attr('text-anchor', 'middle')
         .attr('font-size', '12px')
         .attr('font-family', 'sans-serif')
@@ -467,7 +465,7 @@ function renderPersons(
         .append('text')
         .attr('class', 'person-id')
         .attr('x', 0)
-        .attr('y', options.symbolSize / 2 + 65)
+        .attr('y', options.symbolSize / 2 + 15)
         .attr('text-anchor', 'middle')
         .attr('font-size', '11px')
         .attr('font-family', 'sans-serif')
