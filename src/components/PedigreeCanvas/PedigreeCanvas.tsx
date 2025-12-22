@@ -76,7 +76,7 @@ export function PedigreeCanvas() {
   });
 
   return (
-    <div className={styles.canvasContainer}>
+    <div className={styles.canvasContainer} data-tour="canvas">
       <div className={styles.zoomControls}>
         <button onClick={zoomIn} title="Zoom In">+</button>
         <span className={styles.zoomLevel}>{Math.round(zoomLevel * 100)}%</span>

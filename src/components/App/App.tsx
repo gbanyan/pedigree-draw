@@ -11,10 +11,13 @@ import { PropertyPanel } from '../PropertyPanel/PropertyPanel';
 import { RelationshipPanel } from '../RelationshipPanel/RelationshipPanel';
 import { FilePanel } from '../FilePanel/FilePanel';
 import { WelcomeModal } from '../WelcomeModal/WelcomeModal';
+import { TourPromptModal } from '../TourPromptModal/TourPromptModal';
+import { useGuidedTour } from '../GuidedTour/useGuidedTour';
 import { usePedigreeStore, useTemporalStore } from '@/store/pedigreeStore';
 import styles from './App.module.css';
 
 const WELCOME_DISMISSED_KEY = 'pedigree-draw-welcome-dismissed';
+const TOUR_COMPLETED_KEY = 'pedigree-draw-tour-completed';
 
 export function App() {
   const {
@@ -26,13 +29,36 @@ export function App() {
   } = usePedigreeStore();
   const temporal = useTemporalStore();
 
+  // Guided tour hook
+  const { startTour } = useGuidedTour();
+
   // Welcome modal state - check localStorage on init
   const [showWelcome, setShowWelcome] = useState(() => {
     return localStorage.getItem(WELCOME_DISMISSED_KEY) !== 'true';
   });
 
+  // Tour prompt modal state - show after welcome if tour not completed
+  const [showTourPrompt, setShowTourPrompt] = useState(false);
+
   const handleCloseWelcome = () => {
     setShowWelcome(false);
+    // Show tour prompt if tour hasn't been completed yet
+    if (localStorage.getItem(TOUR_COMPLETED_KEY) !== 'true') {
+      setShowTourPrompt(true);
+    }
+  };
+
+  const handleStartTour = () => {
+    setShowTourPrompt(false);
+    // Small delay to let modal close before tour starts
+    setTimeout(() => {
+      startTour();
+    }, 100);
+  };
+
+  const handleSkipTour = () => {
+    setShowTourPrompt(false);
+    localStorage.setItem(TOUR_COMPLETED_KEY, 'true');
   };
 
   // Keyboard shortcuts
@@ -99,6 +125,9 @@ export function App() {
       </footer>
 
       {showWelcome && <WelcomeModal onClose={handleCloseWelcome} />}
+      {showTourPrompt && (
+        <TourPromptModal onStartTour={handleStartTour} onSkip={handleSkipTour} />
+      )}
     </div>
   );
 }

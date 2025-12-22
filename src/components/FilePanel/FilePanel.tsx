@@ -125,7 +125,7 @@ export function FilePanel() {
   }, [createNewPedigree]);
 
   return (
-    <div className={styles.panel}>
+    <div className={styles.panel} data-tour="file-panel">
       <div className={styles.header}>File Operations</div>
 
       <div className={styles.section}>
@@ -163,7 +163,7 @@ export function FilePanel() {
 
       <div className={styles.header}>Export</div>
 
-      <div className={styles.section}>
+      <div className={styles.section} data-tour="export-section">
         <button
           className={styles.button}
           onClick={handleExportSvg}

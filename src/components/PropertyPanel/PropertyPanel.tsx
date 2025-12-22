@@ -63,7 +63,7 @@ export function PropertyPanel() {
   };
 
   return (
-    <div className={styles.panel}>
+    <div className={styles.panel} data-tour="property-panel">
       <div className={styles.header}>
         Properties
         <span className={styles.personId}>{selectedPerson.id}</span>

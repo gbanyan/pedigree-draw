@@ -163,7 +163,7 @@ export function Toolbar() {
 
       <div className={styles.divider} />
 
-      <div className={styles.toolGroup}>
+      <div className={styles.toolGroup} data-tour="person-buttons">
         <button
           className={styles.toolButton}
           onClick={() => handleAddPerson(Sex.Male)}
@@ -192,7 +192,7 @@ export function Toolbar() {
 
       <div className={styles.divider} />
 
-      <div className={styles.toolGroup}>
+      <div className={styles.toolGroup} data-tour="relationship-buttons">
         <button
           className={styles.toolButton}
           onClick={handleAddSpouse}
