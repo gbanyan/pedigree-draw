@@ -122,6 +122,16 @@ export function App() {
       <footer className={styles.footer}>
         <span>Pedigree Draw - For genetic counselors and bioinformatics professionals</span>
         <span>NSGC Standard Symbols</span>
+        <span>
+          <a
+            href="https://buymeacoffee.com/gbanyan"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#FFDD00', textDecoration: 'none', fontWeight: '500' }}
+          >
+            ☕ Support this project
+          </a>
+        </span>
       </footer>
 
       {showWelcome && <WelcomeModal onClose={handleCloseWelcome} />}

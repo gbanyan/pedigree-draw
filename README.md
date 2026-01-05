@@ -4,6 +4,14 @@
 
 A professional pedigree (family tree) drawing tool for genetic counselors and bioinformatics professionals.
 
+## ☕ Support this project
+
+If you find this pedigree drawing tool helpful for research, teaching, or clinical work, consider supporting its development.
+
+<a href="https://buymeacoffee.com/gbanyan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
+👉 Buy me a coffee: https://buymeacoffee.com/gbanyan
+
 ## Online Demo
 
 https://gbanyan.github.io/pedigree-draw/

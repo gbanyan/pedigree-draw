@@ -4,6 +4,14 @@
 
 專為遺傳諮詢師和生物資訊專業人員設計的 Pedigree（家族樹）繪圖工具。
 
+## ☕ 支持這個專案
+
+如果您覺得這個家譜繪圖工具對您的研究、教學或臨床工作有幫助，歡迎支持它的開發。
+
+<a href="https://buymeacoffee.com/gbanyan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
+👉 請我喝杯咖啡：https://buymeacoffee.com/gbanyan
+
 ## 線上 Demo
 
 https://gbanyan.github.io/pedigree-draw/

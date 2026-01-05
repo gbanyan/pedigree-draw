@@ -30,6 +30,8 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
     ],
     privacyTitle: '隱私政策',
     privacyContent: '本網站不搜集任何使用者資料，也不儲存任何資料。所有操作僅在您的瀏覽器中進行，關閉頁面後資料即消失。',
+    supportTitle: '☕ 支持這個專案',
+    supportContent: '如果您覺得這個工具對您的研究、教學或臨床工作有幫助，歡迎支持它的開發。',
     buttonText: '我了解，開始使用',
   } : {
     title: 'Welcome to Pedigree Draw',
@@ -41,6 +43,8 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
     ],
     privacyTitle: 'Privacy Policy',
     privacyContent: 'This website does not collect any user data or store any information. All operations are performed locally in your browser. Data will be lost when you close the page.',
+    supportTitle: '☕ Support This Project',
+    supportContent: 'If you find this tool helpful for research, teaching, or clinical work, consider supporting its development.',
     buttonText: 'I Understand, Let\'s Start',
   };
 
@@ -64,6 +68,20 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>{content.privacyTitle}</h2>
           <p className={styles.paragraph}>{content.privacyContent}</p>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>{content.supportTitle}</h2>
+          <p className={styles.paragraph}>{content.supportContent}</p>
+          <div style={{ textAlign: 'center', marginTop: '12px' }}>
+            <a href="https://buymeacoffee.com/gbanyan" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+                alt="Buy Me A Coffee"
+                style={{ height: '50px', width: 'auto', borderRadius: '8px' }}
+              />
+            </a>
+          </div>
         </section>
 
         <button className={styles.button} onClick={handleClose}>
