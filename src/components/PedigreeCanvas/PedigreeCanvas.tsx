@@ -78,11 +78,12 @@ export function PedigreeCanvas() {
   return (
     <div className={styles.canvasContainer} data-tour="canvas">
       <div className={styles.zoomControls}>
-        <button onClick={zoomIn} title="Zoom In">+</button>
+        <button onClick={zoomIn} title="Zoom In (scroll up)">＋</button>
         <span className={styles.zoomLevel}>{Math.round(zoomLevel * 100)}%</span>
-        <button onClick={zoomOut} title="Zoom Out">-</button>
-        <button onClick={resetZoom} title="Reset Zoom">Reset</button>
-        <button onClick={fitToContent} title="Fit to Content">Fit</button>
+        <button onClick={zoomOut} title="Zoom Out (scroll down)">－</button>
+        <div className={styles.zoomSeparator} />
+        <button onClick={resetZoom} title="Reset Zoom (100%)">1:1</button>
+        <button onClick={fitToContent} title="Fit to Content">⊡</button>
       </div>
 
       <svg
@@ -94,15 +95,17 @@ export function PedigreeCanvas() {
 
       {!pedigree && (
         <div className={styles.emptyState}>
+          <div className={styles.emptyStateIcon}>🧬</div>
           <p>No pedigree loaded</p>
-          <p>Import a PED file or create a new pedigree</p>
+          <p>Import a PED file or create a new pedigree from the File panel</p>
         </div>
       )}
 
       {pedigree && pedigree.persons.size === 0 && (
         <div className={styles.emptyState}>
+          <div className={styles.emptyStateIcon}>👥</div>
           <p>Pedigree: {pedigree.familyId}</p>
-          <p>Use the toolbar to add persons (Male/Female/Unknown)</p>
+          <p>Use the toolbar above to add persons (Male / Female / Unknown)</p>
         </div>
       )}
     </div>
